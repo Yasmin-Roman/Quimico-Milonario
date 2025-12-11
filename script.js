@@ -12,7 +12,7 @@ let musicaSuspenso; // Variable global para controlar la música de fondo
 
 
 // --- TEMPORIZADOR ---
-let tiempoLimite = 30; // Tiempo en segundos
+let tiempoLimite = 45; // Tiempo en segundos
 let tiempoRestante = tiempoLimite;
 let temporizadorID; // Referencia del setInterval
 
@@ -427,4 +427,5 @@ function usarComodinPista() {
 registroForm.addEventListener('submit', function(e) {
     e.preventDefault(); 
     iniciarJuego();
+
 });
