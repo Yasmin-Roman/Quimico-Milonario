@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Químico Millonario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor-principal">
+        <header>
+            <h1>🏆 Químico Millonario: El Desafío Analítico</h1>
+        </header>
+
+        <div id="inicio-container" class="pantalla-inicio">
+            <h2>Bienvenido al Químico Millonario</h2>
+            <p>¡Demuestra tus conocimientos en Química Analítica! Responde correctamente para acumular puntos.</p>
+            <h3>Instrucciones</h3>
+            <ul>
+                <li>Tienes **30 segundos** para responder cada pregunta.</li>
+                <li>Los comodines detienen el tiempo para darte un respiro.</li>
+                <li>Falla una pregunta de Muerte Súbita y el juego termina.</li>
+            </ul>
+            
+            <form id="registro-form">
+                <input type="text" id="nombre-completo" placeholder="Nombre y Apellido" required>
+                <input type="text" id="cedula-identidad" placeholder="Cédula de Identidad" required>
+                <input type="email" id="correo-electronico" placeholder="Correo Electrónico" required>
+                <button type="submit" id="iniciar-btn" class="btn-siguiente">Iniciar Desafío</button>
+            </form>
+        </div>
+        
+        <div id="juego-container" style="display:none;">
+            
+            <div id="juego-cabecera">
+                <div id="puntuacion-scoreboard">
+                    Puntos: <span id="puntuacion-total">0</span> | Pregunta: <span id="pregunta-contador">0/10</span>
+                </div>
+                <div id="temporizador-display">
+                    Tiempo: <span id="tiempo-restante">30</span>s
+                </div>
+                <div id="comodines" class="comodines">
+                    <button id="comodin-5050" class="btn-comodin">50:50</button>
+                    <button id="comodin-audiencia" class="btn-comodin">Audiencia</button>
+                    <button id="comodin-pista" class="btn-comodin">Pista Profesor</button>
+                </div>
+            </div>
+
+            <div id="quiz-container">
+                <h2 id="pregunta-titulo"></h2>
+                <div id="muerte-subita-indicador" style="display:none;">
+                    ⚠️ ¡PREGUNTA DE MUERTE SÚBITA!
+                </div>
+                <div id="opciones-container" class="opciones-grid">
+                    </div>
+                <button id="siguiente-btn" class="btn-siguiente" style="display:none;">Siguiente Pregunta</button>
+            </div>
+        </div>
+
+        <div id="resultado-final" style="display:none;">
+            <h2>Juego Terminado</h2>
+            <p>¡Felicidades! Lograste una puntuación final de: <span id="puntuacion-final">0</span>.</p>
+            <p id="mensaje-final"></p>
+            <button onclick="location.reload()" class="btn-siguiente">Volver a Jugar</button>
+        </div>
+
+        <div id="feedback-modal" class="modal" style="display:none;">
+            <div class="modal-contenido">
+                <h3 id="modal-titulo"></h3>
+                <p id="modal-mensaje"></p>
+                <button id="modal-cerrar" class="btn-siguiente">Continuar</button>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script src="data.js"></script> 
+    <script src="script.js"></script>
+</body>
+</html>

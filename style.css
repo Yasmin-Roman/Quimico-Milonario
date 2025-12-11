@@ -1,0 +1,223 @@
+/* --- 1. CONFIGURACIÓN GENERAL Y FUENTE --- */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0d1117; /* Fondo oscuro (GitHub Dark) */
+    color: #f0f6fc; /* Texto principal claro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.contenedor-principal {
+    max-width: 900px;
+    width: 95%;
+    background-color: #161b22; /* Contenedor oscuro */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+}
+
+h1, h2, h3 {
+    color: #ffcc00; /* Dorado para títulos */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* --- 2. BOTONES GENERALES Y ESTILOS DE RESPUESTA --- */
+
+.btn-siguiente,
+.btn-opcion,
+.btn-comodin,
+#registro-form button {
+    padding: 15px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.1s;
+    border: 2px solid #30363d;
+    color: #f0f6fc;
+    background-color: #21262d; /* Botón oscuro */
+    width: 100%; /* Ajuste por defecto */
+    text-align: left;
+}
+
+.btn-opcion:hover:not(:disabled) {
+    background-color: #30363d;
+    transform: translateY(-2px);
+}
+/* Estilo adicional para las opciones eliminadas por el comodín 50:50 */
+.btn-opcion[style*="opacity: 0.3"] {
+    background-color: #30363d !important; /* Gris más oscuro para indicar inactividad */
+    text-decoration: line-through; /* Tachar el texto para mayor claridad */
+    color: #a0a0a0 !important; /* Texto más claro/apagado */
+    border-color: #30363d !important;
+}
+
+/* Estado de la respuesta */
+.btn-opcion.correcto {
+    background-color: #238636; /* Verde GitHub */
+    border-color: #238636;
+    font-weight: bold;
+}
+
+.btn-opcion.incorrecto {
+    background-color: #da3633; /* Rojo GitHub */
+    border-color: #da3633;
+    font-weight: bold;
+}
+
+/* Deshabilitado */
+.btn-opcion:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* --- 3. SECCIÓN DE INICIO Y REGISTRO --- */
+
+.pantalla-inicio h2, .pantalla-inicio h3 {
+    color: #58a6ff; /* Azul para guías */
+}
+
+#registro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#registro-form input {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #30363d;
+    background-color: #0d1117;
+    color: #f0f6fc;
+    font-size: 1em;
+}
+
+/* --- 4. CABECERA DEL JUEGO (HUD: Scoreboard y Temporizador) --- */
+
+#juego-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    background-color: #0d1117;
+}
+
+#puntuacion-scoreboard, #temporizador-display {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+#tiempo-restante {
+    color: #da3633; /* Rojo para el tiempo */
+}
+
+
+/* --- 5. GRID DE OPCIONES --- */
+
+.opciones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2x2 */
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* --- 6. COMODINES --- */
+
+.comodines {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.btn-comodin {
+    flex-grow: 1; /* Para que ocupen el mismo ancho */
+    font-size: 0.9em;
+    text-align: center;
+    background-color: #58a6ff; /* Azul para resaltar la acción */
+    color: #0d1117;
+    font-weight: bold;
+}
+
+.btn-comodin.usado {
+    background-color: #30363d;
+    color: #f0f6fc;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* --- 7. INDICADOR DE MUERTE SÚBITA --- */
+
+#muerte-subita-indicador {
+    text-align: center;
+    font-size: 1.4em;
+    color: #da3633;
+    font-weight: bold;
+    border: 2px solid #da3633;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    animation: pulse 1s infinite alternate; /* Animación simple */
+}
+
+@keyframes pulse {
+    from { opacity: 1; }
+    to { opacity: 0.7; }
+}
+
+/* --- 8. MODAL DE FEEDBACK (Ventanas emergentes) --- */
+
+.modal {
+    position: fixed;
+    z-index: 100; /* Asegura que esté por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8); /* Fondo semi-transparente oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contenido {
+    background-color: #161b22;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #58a6ff;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+#modal-titulo {
+    color: #ffcc00;
+}
+
+#modal-cerrar {
+    margin-top: 20px;
+    background-color: #21262d;
+}
+
+/* --- 9. AJUSTES DE RESPONSIVE (Móviles) --- */
+
+@media (max-width: 600px) {
+    .opciones-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+    }
+    .comodines {
+        flex-direction: column;
+    }
+}
