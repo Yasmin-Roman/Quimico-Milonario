@@ -429,26 +429,14 @@ function usarComodinPista() {
     mostrarModal("Pista del Profesor", `¡Cuidado! La pista es: **${pista}**`, 'info');
 }
 
-// CÓDIGO NUEVO PARA LA SECCIÓN 6
+// ====================================================================
+// === 6. ASIGNACIÓN DE EVENTOS INICIALES ===
+// ====================================================================
 
 registroForm.addEventListener('submit', function(e) {
-    e.preventDefault(); 
-    
-    // >>> MODIFICADO: Lógica de Validación y Restricción de Cédula <<<
-    const cedula = cedulaInput.value.trim();
-    const claveCompletado = 'quimico_millonario_completado_' + cedula;
-    
-    // 1. Revisar si ya completó el juego
-    if (localStorage.getItem(claveCompletado) === 'true') {
-        alert("¡Ya has completado esta evaluación con esta cédula! No se permiten reintentos.");
-        return; // Detiene la ejecución e impide iniciar el juego
-    }
-
-    // 2. Si no está completado, iniciar el juego
-    iniciarJuego();
-    // >>> FIN Lógica de Validación <<<
+    e.preventDefault(); 
+    iniciarJuego(); // <<< REVERTIDO: Vuelve a iniciar directo
 });
-// CÓDIGO A AÑADIR en script.js (Al final del archivo)
 
 // ====================================================================
 // === 7. LÓGICA DE RECOLECCIÓN DE DATOS Y RESTRICCIÓN (FORMSPREE) ===
@@ -476,3 +464,4 @@ function enviarResultados(datos) {
     })
     .catch(error => console.error('Error de red al enviar datos:', error));
 }
+
