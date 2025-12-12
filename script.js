@@ -10,6 +10,7 @@ let preguntasRespondidas = 0;
 const MAX_PREGUNTAS = 10;
 let musicaSuspenso; // Variable global para controlar la música de fondo
 
+
 // --- TEMPORIZADOR ---
 let tiempoLimite = 45; // Tiempo en segundos
 let tiempoRestante = tiempoLimite;
@@ -23,7 +24,7 @@ let comodinPistaUsado = false;
 // --- ELEMENTOS DEL DOM ---
 const inicioContainer = document.getElementById('inicio-container');
 const registroForm = document.getElementById('registro-form');
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrbnrqkd';
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx23PoD7rTmr-kVqS5mIa0_IG9E4C7pXV8e1wWBLrxqi6xMExQNtBOXI5OBC9Pi0HTo/exec";
 const juegoContainer = document.getElementById('juego-container');
 const preguntaTitulo = document.getElementById('pregunta-titulo');
 const opcionesContainer = document.getElementById('opciones-container');
@@ -45,6 +46,7 @@ const modalCerrarBtn = document.getElementById('modal-cerrar');
 const comodin5050Btn = document.getElementById('comodin-5050');
 const comodinAudienciaBtn = document.getElementById('comodin-audiencia');
 const comodinPistaBtn = document.getElementById('comodin-pista');
+
 
 // ====================================================================
 // === 2. FUNCIONES AUXILIARES (AUDIO, BARAJE Y MODAL) ===
@@ -104,6 +106,7 @@ function cerrarModal() {
     modalCerrarBtn.onclick = cerrarModal; // Restablecer el listener por defecto
 }
 
+
 // ====================================================================
 // === 3. LÓGICA DE TEMPORIZADOR ===
 // ====================================================================
@@ -155,7 +158,6 @@ function manejarTiempoAgotado() {
 }
 
 
-// 
 // ====================================================================
 // === 4. LÓGICA PRINCIPAL DEL JUEGO ===
 // ====================================================================
@@ -244,6 +246,7 @@ function verificarRespuesta(seleccion, pregunta, boton) {
         siguienteBtn.style.display = 'block';
         siguienteBtn.onclick = avanzarPregunta;
 
+
     } else {
         // --- RESPUESTA INCORRECTA ---
         reproducirError();
@@ -316,8 +319,7 @@ function terminarJuego() {
     diagnosticoDisplay.innerHTML = mensajeDiagnostico;
     
     // Ocultar modal si estaba abierto antes de terminar el juego
-    feedbackModal.style.display = 'none';
-    
+    feedbackModal.style.display = 'none'; 
 }
 
 /**
@@ -417,19 +419,12 @@ function usarComodinPista() {
     mostrarModal("Pista del Profesor", `¡Cuidado! La pista es: **${pista}**`, 'info');
 }
 
+
 // ====================================================================
 // === 6. ASIGNACIÓN DE EVENTOS INICIALES ===
 // ====================================================================
 
 registroForm.addEventListener('submit', function(e) {
-    e.preventDefault(); 
-    iniciarJuego(); // <<< REVERTIDO: Vuelve a iniciar directo
+    e.preventDefault(); 
+    iniciarJuego();
 });
-
-
-
-
-
-
-
-
