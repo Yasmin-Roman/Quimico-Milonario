@@ -111,33 +111,49 @@ function cerrarModal() {
 // === 3. LÓGICA DE TEMPORIZADOR ===
 // ====================================================================
 
-function iniciarTemporizador() {
-    detenerTemporizador(); 
-    tiempoRestante = tiempoLimite;
-    tiempoRestanteDisplay.textContent = tiempoRestante;
-
-    temporizadorID = setInterval(() => {
-        tiempoRestante--;
-        tiempoRestanteDisplay.textContent = tiempoRestante;
-
-        if (tiempoRestante <= 0) {
-            detenerTemporizador();
-            manejarTiempoAgotado(); 
-        }
-    }, 1000); 
+// --- 3.1 Función para actualizar la visualización del tiempo ---
+function actualizarTiempoDisplay() {
+    tiempoRestanteDisplay.textContent = tiempoRestante; 
 }
 
+// --- 3.2 Función para detener el temporizador (y el audio) ---
 function detenerTemporizador() {
     if (temporizadorID) {
         clearInterval(temporizadorID);
         temporizadorID = null;
     }
-// ¡NUEVO! Detener la música de suspenso
+    
+    // Dejamos el control de audio limpio y funcional aquí
     if (musicaSuspenso) {
         musicaSuspenso.pause();
     }
 }
 
+// --- 3.3 Función para iniciar el temporizador ---
+function iniciarTemporizador() {
+    // 1. Limpieza segura del temporizador anterior
+    if (temporizadorID) {
+        clearInterval(temporizadorID); 
+        temporizadorID = null;
+    }
+
+    // 2. Reinicio de la variable de tiempo y el temporizador
+    tiempoRestante = 45; // Asumimos 45 segundos
+    actualizarTiempoDisplay(); 
+
+    // 3. Establecer el nuevo intervalo
+    temporizadorID = setInterval(() => {
+        tiempoRestante--;
+        actualizarTiempoDisplay();
+
+        if (tiempoRestante <= 0) {
+            detenerTemporizador(); 
+            manejarTiempoAgotado(); // Llama a la lógica de tiempo agotado
+        }
+    }, 1000);
+}
+
+// --- 3.4 Función para manejar el tiempo agotado ---
 function manejarTiempoAgotado() {
     reproducirError();
     document.querySelectorAll('.btn-opcion').forEach(btn => btn.disabled = true);
@@ -156,8 +172,6 @@ function manejarTiempoAgotado() {
     // Configurar el botón del modal para terminar el juego
     modalCerrarBtn.onclick = terminarJuego;
 }
-
-
 // ====================================================================
 // === 4. LÓGICA PRINCIPAL DEL JUEGO ===
 // ====================================================================
@@ -428,3 +442,4 @@ registroForm.addEventListener('submit', function(e) {
     e.preventDefault(); 
     iniciarJuego();
 });
+
