@@ -24,7 +24,7 @@ let comodinPistaUsado = false;
 // --- ELEMENTOS DEL DOM ---
 const inicioContainer = document.getElementById('inicio-container');
 const registroForm = document.getElementById('registro-form');
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxZQuIivrhhAPGynf_zClrzMuFuawmoXXiz1ocSjVhOi-Et9X0O66FA4vIZ4E4xVNZo0Q/exec";
+const FORMSPREE_ENDPOINT = “https://formspree.io/f/xrbnrqkd”;
 const juegoContainer = document.getElementById('juego-container');
 const preguntaTitulo = document.getElementById('pregunta-titulo');
 const opcionesContainer = document.getElementById('opciones-container');
@@ -349,7 +349,21 @@ function generarDiagnostico(puntos) {
 
     return `<h2 style="color: var(--color-principal); margin-top: 15px;">${titulo}</h2><p>${mensaje}</p>`;
 }
-
+function enviarResultados(datos) {
+    // Renombra o reemplaza tu función fetch
+    fetch(FORMSPREE_ENDPOINT, { 
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+    })
+    .then(response => {
+        // El resto de la lógica para el mensaje de éxito se mantiene.
+        console.log("Datos enviados a Formspree.");
+    })
+    .catch(error => console.error('Error al enviar datos:', error));
+}
 // ====================================================================
 // === 5. LÓGICA DE COMODINES ===
 // ====================================================================
@@ -429,4 +443,5 @@ registroForm.addEventListener('submit', function(e) {
     iniciarJuego();
 
 });
+
 
