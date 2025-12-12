@@ -24,7 +24,7 @@ let comodinPistaUsado = false;
 // --- ELEMENTOS DEL DOM ---
 const inicioContainer = document.getElementById('inicio-container');
 const registroForm = document.getElementById('registro-form');
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx23PoD7rTmr-kVqS5mIa0_IG9E4C7pXV8e1wWBLrxqi6xMExQNtBOXI5OBC9Pi0HTo/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxZQuIivrhhAPGynf_zClrzMuFuawmoXXiz1ocSjVhOi-Et9X0O66FA4vIZ4E4xVNZo0Q/exec";
 const juegoContainer = document.getElementById('juego-container');
 const preguntaTitulo = document.getElementById('pregunta-titulo');
 const opcionesContainer = document.getElementById('opciones-container');
@@ -429,3 +429,4 @@ registroForm.addEventListener('submit', function(e) {
     iniciarJuego();
 
 });
+
