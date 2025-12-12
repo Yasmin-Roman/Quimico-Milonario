@@ -315,18 +315,7 @@ function terminarJuego() {
     
     // Ocultar modal si estaba abierto antes de terminar el juego
     feedbackModal.style.display = 'none';
-    / >>> INICIO DEL BLOQUE DE RECOLECCIÓN DE DATOS Y ENVÍO A FORMSPREE <<<
-    const datosFinales = {
-        Nombre: nombreInput.value.trim(), 
-        Cedula: cedulaInput.value.trim(), 
-        Correo: correoInput.value.trim(),
-        Puntuacion: puntuacion,
-        // Limpiamos el HTML para enviar solo el texto plano
-        Diagnostico: generarDiagnostico(puntuacion).replace(/<[^>]*>?/gm, '') 
-    };
-
-    enviarResultados(datosFinales); // ¡LLAMADA A Formspree!
-    // >>> FIN DEL BLOQUE DE RECOLECCIÓN <<<
+    
 }
 
 /**
@@ -461,5 +450,6 @@ function enviarResultados(datos) {
     })
     .catch(error => console.error('Error de red al enviar datos:', error));
 }
+
 
 
