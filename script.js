@@ -108,32 +108,33 @@ function cerrarModal() {
 // === 3. LÓGICA DE TEMPORIZADOR ===
 // ====================================================================
 
-// MODIFICACIÓN CRÍTICA EN function iniciarTemporizador()
-
 function iniciarTemporizador() {
-    // 1. Limpieza segura del temporizador anterior
-    if (temporizadorID) {
-        clearInterval(temporizadorID); 
-        temporizadorID = null;
-        // >>> NO LLAMAMOS A detenerTemporizador() AQUÍ <<<
-    }
+    detenerTemporizador(); 
+    tiempoRestante = tiempoLimite;
+    tiempoRestanteDisplay.textContent = tiempoRestante;
 
-    // 2. Reinicio de la variable de tiempo y el temporizador
-    tiempoRestante = 45; // Asumimos 45 segundos
-    actualizarTiempoDisplay(); 
-
-    // 3. Establecer el nuevo intervalo
     temporizadorID = setInterval(() => {
         tiempoRestante--;
-        actualizarTiempoDisplay();
+        tiempoRestanteDisplay.textContent = tiempoRestante;
 
         if (tiempoRestante <= 0) {
-            detenerTemporizador(); 
-            // ... (resto de la lógica de tiempo agotado)
-            mostrarFeedback(false, "¡Tiempo agotado!");
+            detenerTemporizador();
+            manejarTiempoAgotado(); 
         }
-    }, 1000);
+    }, 1000); 
 }
+
+function detenerTemporizador() {
+    if (temporizadorID) {
+        clearInterval(temporizadorID);
+        temporizadorID = null;
+    }
+// ¡NUEVO! Detener la música de suspenso
+    if (musicaSuspenso) {
+        musicaSuspenso.pause();
+    }
+}
+
 function manejarTiempoAgotado() {
     reproducirError();
     document.querySelectorAll('.btn-opcion').forEach(btn => btn.disabled = true);
@@ -153,6 +154,8 @@ function manejarTiempoAgotado() {
     modalCerrarBtn.onclick = terminarJuego;
 }
 
+
+// 
 // ====================================================================
 // === 4. LÓGICA PRINCIPAL DEL JUEGO ===
 // ====================================================================
@@ -422,6 +425,7 @@ registroForm.addEventListener('submit', function(e) {
     e.preventDefault(); 
     iniciarJuego(); // <<< REVERTIDO: Vuelve a iniciar directo
 });
+
 
 
 
