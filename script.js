@@ -357,8 +357,6 @@ function terminarJuego() {
         Diagnostico: generarDiagnostico(puntuacion).replace(/<[^>]*>?/gm, '') 
     };
 
-    enviarResultados(datosFinales); // ¡LLAMADA A Google Forms!
-    // >>> FIN DEL BLOQUE DE RECOLECCIÓN <<<
 }
 
 /**
@@ -504,6 +502,7 @@ function enviarResultados(datos) {
         console.error('Error al intentar abrir la ventana de envío (Posiblemente bloqueada):', error);
     }
 }
+
 
 
 
