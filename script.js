@@ -353,30 +353,12 @@ function terminarJuego() {
         Cedula: cedula, 
         Correo: correo,
         Puntuacion: puntuacion,
-        Diagnostico: diagnosticoLimpio 
-    };
-    
-    // 2. Construir la URL completa de Google Forms
-    const urlFinal = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse?` +
-        `${ENTRY_NOMBRE}=${encodeURIComponent(datosFinales.Nombre)}&` +
-        `${ENTRY_CEDULA}=${encodeURIComponent(datosFinales.Cedula)}&` +
-        `${ENTRY_CORREO}=${encodeURIComponent(datosFinales.Correo)}&` +
-        `${ENTRY_PUNTUACION}=${encodeURIComponent(datosFinales.Puntuacion)}&` +
-        `${ENTRY_DIAGNOSTICO}=${encodeURIComponent(datosFinales.Diagnostico)}&` +
-        `submit=Submit`;
-
-    // 3. REEMPLAZO CRÍTICO: Redirigir el navegador para forzar el envío
-    juegoContainer.style.display = 'none';
-    
-    // La redirección fuerza al navegador a hacer la petición, resolviendo el problema CORS/fetch.
-    console.log("Redirigiendo a Google Forms para forzar el envío de datos...");
-    window.location.href = urlFinal; 
-}
-          
         // Limpiamos el HTML del diagnóstico antes de enviarlo
         Diagnostico: generarDiagnostico(puntuacion).replace(/<[^>]*>?/gm, '') 
     };
 
+    enviarResultados(datosFinales); // ¡LLAMADA A Google Forms!
+    // >>> FIN DEL BLOQUE DE RECOLECCIÓN <<<
 }
 
 /**
@@ -485,43 +467,7 @@ registroForm.addEventListener('submit', function(e) {
     e.preventDefault(); 
     iniciarJuego();
 });
-// CÓDIGO A REEMPLAZAR en la Sección 7 (Lógica de Google Forms)
 
-function enviarResultados(datos) {
-    // 1. Codificar los datos para la URL
-    const nombreCodificado = encodeURIComponent(datos.Nombre);
-    const cedulaCodificada = encodeURIComponent(datos.Cedula);
-    const correoCodificado = encodeURIComponent(datos.Correo);
-    const puntuacionCodificada = encodeURIComponent(datos.Puntuacion);
-    const diagnosticoCodificado = encodeURIComponent(datos.Diagnostico);
-
-    // 2. Construir la URL completa de Google Forms
-    const url = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse?` +
-        `${ENTRY_NOMBRE}=${nombreCodificado}&` +
-        `${ENTRY_CEDULA}=${cedulaCodificada}&` +
-        `${ENTRY_CORREO}=${correoCodificado}&` +
-        `${ENTRY_PUNTUACION}=${puntuacionCodificada}&` +
-        `${ENTRY_DIAGNOSTICO}=${diagnosticoCodificado}&` +
-        `submit=Submit`;
-
-    // 3. Método garantizado: Abrir y cerrar una pestaña para forzar el envío
-    // Esto evita los problemas de seguridad (CORS) de GitHub Pages.
-    try {
-        const ventanaEmergente = window.open(url, '_blank');
-        
-        // Esperar un momento (500ms) para que el navegador registre el envío de la URL
-        // y luego cerrar la ventana para que sea invisible al usuario.
-        setTimeout(() => {
-            if (ventanaEmergente) {
-                ventanaEmergente.close();
-                console.log("Resultados enviados exitosamente por redirección temporal.");
-            }
-        }, 500); 
-        
-    } catch (error) {
-        console.error('Error al intentar abrir la ventana de envío (Posiblemente bloqueada):', error);
-    }
-}
 
 
 
