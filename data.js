@@ -110,7 +110,7 @@ const preguntas = [
         respuestaCorrecta: "0.203 g",
         valorPuntos: 50000, 
         mortal: true, 
-        pistaProfesor: "El factor gravimétrico es la proporción de gramos de analito por gramo de precipitado.",
+        pistaProfesor: "El cálculo es simple: Masa de analito = Masa de Precipitado * Factor Gravimétrico (FG).",
         explicacionDetallada: "Masa de Ni = Masa de Precipitado * FG = 1.00 g * 0.203 = 0.203 g.",
         comodin5050: ["0.203 g", "0.406 g"],
         comodinAudiencia: { "0.203 g": 95, "0.406 g": 5 }
@@ -130,3 +130,4 @@ const preguntas = [
     }
 
 ];
+
