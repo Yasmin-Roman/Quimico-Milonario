@@ -47,7 +47,6 @@ const comodin5050Btn = document.getElementById('comodin-5050');
 const comodinAudienciaBtn = document.getElementById('comodin-audiencia');
 const comodinPistaBtn = document.getElementById('comodin-pista');
 
-
 // ====================================================================
 // === 2. FUNCIONES AUXILIARES (AUDIO, BARAJE Y MODAL) ===
 // ====================================================================
@@ -106,7 +105,6 @@ function cerrarModal() {
     modalCerrarBtn.onclick = cerrarModal; // Restablecer el listener por defecto
 }
 
-
 // ====================================================================
 // === 3. LÓGICA DE TEMPORIZADOR ===
 // ====================================================================
@@ -156,7 +154,6 @@ function manejarTiempoAgotado() {
     // Configurar el botón del modal para terminar el juego
     modalCerrarBtn.onclick = terminarJuego;
 }
-
 
 // ====================================================================
 // === 4. LÓGICA PRINCIPAL DEL JUEGO ===
@@ -245,7 +242,6 @@ function verificarRespuesta(seleccion, pregunta, boton) {
         mostrarModal("¡Respuesta Correcta!", `Ganaste ${pregunta.valorPuntos} puntos. Explicación: ${pregunta.explicacionDetallada}`, 'success');
         siguienteBtn.style.display = 'block';
         siguienteBtn.onclick = avanzarPregunta;
-
 
     } else {
         // --- RESPUESTA INCORRECTA ---
@@ -419,7 +415,6 @@ function usarComodinPista() {
     mostrarModal("Pista del Profesor", `¡Cuidado! La pista es: **${pista}**`, 'info');
 }
 
-
 // ====================================================================
 // === 6. ASIGNACIÓN DE EVENTOS INICIALES ===
 // ====================================================================
@@ -429,6 +424,3 @@ registroForm.addEventListener('submit', function(e) {
     iniciarJuego();
 
 });
-
-
-
