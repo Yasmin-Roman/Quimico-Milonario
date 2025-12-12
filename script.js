@@ -353,6 +353,26 @@ function terminarJuego() {
         Cedula: cedula, 
         Correo: correo,
         Puntuacion: puntuacion,
+        Diagnostico: diagnosticoLimpio 
+    };
+    
+    // 2. Construir la URL completa de Google Forms
+    const urlFinal = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse?` +
+        `${ENTRY_NOMBRE}=${encodeURIComponent(datosFinales.Nombre)}&` +
+        `${ENTRY_CEDULA}=${encodeURIComponent(datosFinales.Cedula)}&` +
+        `${ENTRY_CORREO}=${encodeURIComponent(datosFinales.Correo)}&` +
+        `${ENTRY_PUNTUACION}=${encodeURIComponent(datosFinales.Puntuacion)}&` +
+        `${ENTRY_DIAGNOSTICO}=${encodeURIComponent(datosFinales.Diagnostico)}&` +
+        `submit=Submit`;
+
+    // 3. REEMPLAZO CRÍTICO: Redirigir el navegador para forzar el envío
+    juegoContainer.style.display = 'none';
+    
+    // La redirección fuerza al navegador a hacer la petición, resolviendo el problema CORS/fetch.
+    console.log("Redirigiendo a Google Forms para forzar el envío de datos...");
+    window.location.href = urlFinal; 
+}
+          
         // Limpiamos el HTML del diagnóstico antes de enviarlo
         Diagnostico: generarDiagnostico(puntuacion).replace(/<[^>]*>?/gm, '') 
     };
@@ -502,6 +522,7 @@ function enviarResultados(datos) {
         console.error('Error al intentar abrir la ventana de envío (Posiblemente bloqueada):', error);
     }
 }
+
 
 
 
