@@ -24,6 +24,9 @@ let comodinPistaUsado = false;
 const inicioContainer = document.getElementById('inicio-container');
 const registroForm = document.getElementById('registro-form');
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrbnrqkd';
+const nombreInput = document.getElementById('nombre-input');
+const cedulaInput = document.getElementById('cedula-input');
+const correoInput = document.getElementById('correo-input');
 const juegoContainer = document.getElementById('juego-container');
 const preguntaTitulo = document.getElementById('pregunta-titulo');
 const opcionesContainer = document.getElementById('opciones-container');
@@ -423,5 +426,6 @@ registroForm.addEventListener('submit', function(e) {
     iniciarJuego();
 
 });
+
 
 
