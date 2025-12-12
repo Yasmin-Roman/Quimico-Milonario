@@ -24,13 +24,7 @@ let comodinPistaUsado = false;
 // --- ELEMENTOS DEL DOM ---
 const inicioContainer = document.getElementById('inicio-container');
 const registroForm = document.getElementById('registro-form');
-const GOOGLE_FORM_ID = '1FAIpQLSeCgAzb6fWLDhM7fAJaFx4CWRQ9q6Lsdpxyp6c_Bc9MUSLWbw'; 
-const ENTRY_NOMBRE = 'entry.1071194020'; 
-const ENTRY_CEDULA = 'entry.678524081'; 
-const ENTRY_CORREO = 'entry.544834782'; 
-const ENTRY_PUNTUACION = 'entry.1655494894'; 
-const ENTRY_DIAGNOSTICO = 'entry.989143805';
-
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx23PoD7rTmr-kVqS5mIa0_IG9E4C7pXV8e1wWBLrxqi6xMExQNtBOXI5OBC9Pi0HTo/exec";
 const juegoContainer = document.getElementById('juego-container');
 const preguntaTitulo = document.getElementById('pregunta-titulo');
 const opcionesContainer = document.getElementById('opciones-container');
@@ -448,6 +442,8 @@ registroForm.addEventListener('submit', function(e) {
     e.preventDefault(); 
     iniciarJuego();
 });
+
+
 
 
 
