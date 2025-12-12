@@ -340,6 +340,25 @@ function terminarJuego() {
     
     // Ocultar modal si estaba abierto antes de terminar el juego
     feedbackModal.style.display = 'none'; 
+    // >>> INICIO DEL BLOQUE DE RECOLECCIÓN DE DATOS SEGURO (GOOGLE FORMS) <<<
+    
+    // Recolección Segura: Obtener los valores en el último momento posible (y verificar si existen)
+    // El '?' es un operador ternario que previene el error si el elemento no existe.
+    const nombre = document.getElementById('nombre-input') ? document.getElementById('nombre-input').value.trim() : 'N/A';
+    const cedula = document.getElementById('cedula-input') ? document.getElementById('cedula-input').value.trim() : 'N/A';
+    const correo = document.getElementById('correo-input') ? document.getElementById('correo-input').value.trim() : 'N/A';
+
+    const datosFinales = {
+        Nombre: nombre, 
+        Cedula: cedula, 
+        Correo: correo,
+        Puntuacion: puntuacion,
+        // Limpiamos el HTML del diagnóstico antes de enviarlo
+        Diagnostico: generarDiagnostico(puntuacion).replace(/<[^>]*>?/gm, '') 
+    };
+
+    enviarResultados(datosFinales); // ¡LLAMADA A Google Forms!
+    // >>> FIN DEL BLOQUE DE RECOLECCIÓN <<<
 }
 
 /**
@@ -448,5 +467,6 @@ registroForm.addEventListener('submit', function(e) {
     e.preventDefault(); 
     iniciarJuego();
 });
+
 
 
