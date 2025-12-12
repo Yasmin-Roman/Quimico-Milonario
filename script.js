@@ -426,6 +426,35 @@ registroForm.addEventListener('submit', function(e) {
     iniciarJuego();
 
 });
+// CÓDIGO A AÑADIR en script.js (Al final del archivo)
+
+// ====================================================================
+// === 7. LÓGICA DE RECOLECCIÓN DE DATOS Y RESTRICCIÓN (FORMSPREE) ===
+// ====================================================================
+
+function enviarResultados(datos) {
+    const cedula = datos.Cedula; 
+    const claveCompletado = 'quimico_millonario_completado_' + cedula;
+    
+    fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify(datos)
+    })
+    .then(response => {
+        if (response.ok) {
+            // Guardar el flag de reintento en el navegador (solo si el envío fue exitoso)
+            localStorage.setItem(claveCompletado, 'true'); 
+            console.log("Resultados enviados a Formspree con éxito. Juego bloqueado para esta cédula.");
+        } else {
+            console.error("Error al enviar datos a Formspree:", response.status);
+        }
+    })
+    .catch(error => console.error('Error de red al enviar datos:', error));
+}
+
 
 
 
