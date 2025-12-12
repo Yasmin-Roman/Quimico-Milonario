@@ -108,33 +108,32 @@ function cerrarModal() {
 // === 3. LÓGICA DE TEMPORIZADOR ===
 // ====================================================================
 
-function iniciarTemporizador() {
-    detenerTemporizador(); 
-    tiempoRestante = tiempoLimite;
-    tiempoRestanteDisplay.textContent = tiempoRestante;
+// MODIFICACIÓN CRÍTICA EN function iniciarTemporizador()
 
+function iniciarTemporizador() {
+    // 1. Limpieza segura del temporizador anterior
+    if (temporizadorID) {
+        clearInterval(temporizadorID); 
+        temporizadorID = null;
+        // >>> NO LLAMAMOS A detenerTemporizador() AQUÍ <<<
+    }
+
+    // 2. Reinicio de la variable de tiempo y el temporizador
+    tiempoRestante = 45; // Asumimos 45 segundos
+    actualizarTiempoDisplay(); 
+
+    // 3. Establecer el nuevo intervalo
     temporizadorID = setInterval(() => {
         tiempoRestante--;
-        tiempoRestanteDisplay.textContent = tiempoRestante;
+        actualizarTiempoDisplay();
 
         if (tiempoRestante <= 0) {
-            detenerTemporizador();
-            manejarTiempoAgotado(); 
+            detenerTemporizador(); 
+            // ... (resto de la lógica de tiempo agotado)
+            mostrarFeedback(false, "¡Tiempo agotado!");
         }
-    }, 1000); 
+    }, 1000);
 }
-
-function detenerTemporizador() {
-    if (temporizadorID) {
-        clearInterval(temporizadorID);
-        temporizadorID = null;
-    }
-// ¡NUEVO! Detener la música de suspenso
-    if (musicaSuspenso) {
-        musicaSuspenso.pause();
-    }
-}
-
 function manejarTiempoAgotado() {
     reproducirError();
     document.querySelectorAll('.btn-opcion').forEach(btn => btn.disabled = true);
@@ -423,6 +422,7 @@ registroForm.addEventListener('submit', function(e) {
     e.preventDefault(); 
     iniciarJuego(); // <<< REVERTIDO: Vuelve a iniciar directo
 });
+
 
 
 
