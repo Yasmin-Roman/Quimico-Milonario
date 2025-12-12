@@ -92,7 +92,7 @@ const preguntas = [
 
     // Pregunta 8 (Cálculo de Humedad y MUERTE SÚBITA)
     {
-        pregunta: "8. Una muestra húmeda de 2.00 g pierde 0.05 g después de secarse. ¿Cuál es su % de Humedad? (Cálculo: (0.05 / 2.00) * 100)",
+        pregunta: "8. Una muestra húmeda de 2.00 g pierde 0.05 g después de secarse. ¿Cuál es su % de Humedad?",
         opciones: ["2.0%", "2.2%", "2.5%", "5.0%"],
         respuestaCorrecta: "2.5%",
         valorPuntos: 20000, 
@@ -105,7 +105,7 @@ const preguntas = [
 
     // Pregunta 9
     {
-        pregunta: "9. El FG de Ni/Ni(DMG) es 0.203. Si obtienes 1.00 g de precipitado, ¿cuántos gramos de Ni están presentes? (Cálculo: 1.00 g * 0.203)",
+        pregunta: "9. El FG de Ni/Ni(DMG) es 0.203. Si obtienes 1.00 g de precipitado, ¿cuántos gramos de Ni están presentes?",
         opciones: ["0.050 g", "0.101 g", "0.203 g", "0.406 g"],
         respuestaCorrecta: "0.203 g",
         valorPuntos: 50000, 
@@ -128,4 +128,5 @@ const preguntas = [
         comodin5050: ["El método es Preciso pero Inexacto (Error Sistemático).", "El método es Preciso y Exacto (Bajo Error)."],
         comodinAudiencia: { "El método es Preciso pero Inexacto (Error Sistemático).": 80, "El método es Preciso y Exacto (Bajo Error).": 10, "El método es Impreciso y Exacto (Error Aleatorio).": 5, "El método es Impreciso e Inexacto.": 5 }
     }
+
 ];
