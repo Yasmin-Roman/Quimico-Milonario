@@ -10,7 +10,6 @@ let preguntasRespondidas = 0;
 const MAX_PREGUNTAS = 10;
 let musicaSuspenso; // Variable global para controlar la música de fondo
 
-
 // --- TEMPORIZADOR ---
 let tiempoLimite = 45; // Tiempo en segundos
 let tiempoRestante = tiempoLimite;
@@ -24,7 +23,7 @@ let comodinPistaUsado = false;
 // --- ELEMENTOS DEL DOM ---
 const inicioContainer = document.getElementById('inicio-container');
 const registroForm = document.getElementById('registro-form');
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xrbnrqkd";
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrbnrqkd';
 const juegoContainer = document.getElementById('juego-container');
 const preguntaTitulo = document.getElementById('pregunta-titulo');
 const opcionesContainer = document.getElementById('opciones-container');
@@ -424,4 +423,5 @@ registroForm.addEventListener('submit', function(e) {
     iniciarJuego();
 
 });
+
 
