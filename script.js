@@ -349,21 +349,7 @@ function generarDiagnostico(puntos) {
 
     return `<h2 style="color: var(--color-principal); margin-top: 15px;">${titulo}</h2><p>${mensaje}</p>`;
 }
-function enviarResultados(datos) {
-    // Renombra o reemplaza tu función fetch
-    fetch(FORMSPREE_ENDPOINT, { 
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datos)
-    })
-    .then(response => {
-        // El resto de la lógica para el mensaje de éxito se mantiene.
-        console.log("Datos enviados a Formspree.");
-    })
-    .catch(error => console.error('Error al enviar datos:', error));
-}
+
 // ====================================================================
 // === 5. LÓGICA DE COMODINES ===
 // ====================================================================
@@ -443,5 +429,6 @@ registroForm.addEventListener('submit', function(e) {
     iniciarJuego();
 
 });
+
 
 
