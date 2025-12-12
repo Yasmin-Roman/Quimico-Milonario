@@ -448,6 +448,8 @@ registroForm.addEventListener('submit', function(e) {
     iniciarJuego();
     // >>> FIN Lógica de Validación <<<
 });
+// CÓDIGO A AÑADIR en script.js (Al final del archivo)
+
 // ====================================================================
 // === 7. LÓGICA DE RECOLECCIÓN DE DATOS Y RESTRICCIÓN (FORMSPREE) ===
 // ====================================================================
@@ -474,9 +476,3 @@ function enviarResultados(datos) {
     })
     .catch(error => console.error('Error de red al enviar datos:', error));
 }
-
-
-
-
-
-
