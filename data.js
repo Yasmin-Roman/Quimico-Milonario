@@ -53,13 +53,13 @@ const preguntas = [
 
     // Pregunta 5
     {
-        pregunta: "5. El óxido de hierro ($Fe_2O_3$) se usa para determinar el % de Hierro (Fe). ¿Cuál es el factor estequiométrico (a/b) en el cálculo del FG?",
+        pregunta: "5. El óxido de hierro (Fe₂O₃) se usa para determinar el % de Hierro (Fe). ¿Cuál es el factor estequiométrico (a/b) en el cálculo del FG?",
         opciones: ["1/1", "2/1", "1/2", "3/2"],
         respuestaCorrecta: "2/1",
         valorPuntos: 2000,
         mortal: false,
         pistaProfesor: "Mire cuántos átomos de Fe hay en la fórmula del óxido.",
-        explicacionDetallada: "Hay 2 átomos de Fe en la fórmula ($Fe_2O_3$), por lo tanto el factor estequiométrico es 2/1.",
+        explicacionDetallada: "Hay 2 átomos de Fe en la fórmula (Fe₂O₃), por lo tanto el factor estequiométrico es 2/1.",
         comodin5050: ["2/1", "1/1"],
         comodinAudiencia: { "2/1": 70, "1/1": 20, "1/2": 10 }
     },
@@ -130,4 +130,5 @@ const preguntas = [
     }
 
 ];
+
 
